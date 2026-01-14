@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -13,36 +14,33 @@ const navLinks = [
   { name: "Contact", path: "/contact" },
 ];
 
+const WHATSAPP_LINK = "https://wa.me/9779811010510?text=Hi,%20I'm%20interested%20in%20your%20services";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  const handleWhatsAppClick = () => {
-    window.open("https://wa.me/9779811010510?text=Hi, I'm interested in your services.", "_blank");
-  };
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
-      <div className="container-custom">
-        <div className="flex items-center justify-between h-16 md:h-20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <span className="font-display text-xl md:text-2xl font-bold">
-              <span className="gradient-text">NextGen</span>
-              <span className="text-foreground"> AI</span>
+            <span>
+              <img src="logo-nobg.png" alt="NepGrow logo" height="auto" width="35%" />
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
                   location.pathname === link.path
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                    ? "text-primary"
+                    : "text-muted-foreground"
                 }`}
               >
                 {link.name}
@@ -51,10 +49,12 @@ const Navbar = () => {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Button variant="whatsapp" size="default" onClick={handleWhatsAppClick}>
-              <MessageCircle className="w-4 h-4" />
-              WhatsApp
+          <div className="hidden lg:flex items-center gap-4">
+            <Button variant="whatsapp" size="default" asChild>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-4 h-4" />
+                WhatsApp
+              </a>
             </Button>
           </div>
 
@@ -67,43 +67,44 @@ const Navbar = () => {
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="lg:hidden bg-background/95 backdrop-blur-xl border-b border-border animate-fade-in">
-          <div className="container-custom py-4">
-            <div className="flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 ${
-                    location.pathname === link.path
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <Button
-                variant="whatsapp"
-                size="lg"
-                className="mt-4"
-                onClick={() => {
-                  handleWhatsAppClick();
-                  setIsOpen(false);
-                }}
-              >
-                <MessageCircle className="w-5 h-5" />
-                Chat on WhatsApp
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
+        {/* Mobile Navigation */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden overflow-hidden"
+            >
+              <div className="py-4 space-y-2">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`block py-3 px-4 rounded-lg text-base font-medium transition-colors ${
+                      location.pathname === link.path
+                        ? "bg-primary/10 text-primary"
+                        : "text-muted-foreground hover:bg-secondary"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+                <div className="pt-4">
+                  <Button variant="whatsapp" size="lg" className="w-full" asChild>
+                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="w-5 h-5" />
+                      Chat on WhatsApp
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </nav>
   );
 };

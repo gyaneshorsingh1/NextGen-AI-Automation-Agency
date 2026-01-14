@@ -1,27 +1,29 @@
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
-import { Button } from "@/components/ui/button";
-import { Target, Eye, Award, MessageCircle, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import CTASection from "@/components/sections/CTASection";
+import { Target, Users, Lightbulb, Award } from "lucide-react";
 
 const values = [
   {
     icon: Target,
     title: "Result-Focused",
-    description:
-      "Every project is designed to deliver measurable outcomes for your business, not just technical deliverables.",
+    description: "Every solution we build is designed to generate real, measurable results for your business",
   },
   {
-    icon: Eye,
-    title: "Transparency",
-    description:
-      "Clear communication, honest pricing, and straightforward processes from start to finish.",
+    icon: Users,
+    title: "Client-Centric",
+    description: "Your success is our priority. We work closely with you to understand and meet your needs",
+  },
+  {
+    icon: Lightbulb,
+    title: "Innovation",
+    description: "We use the latest technology and best practices to deliver modern solutions",
   },
   {
     icon: Award,
     title: "Quality",
-    description:
-      "Attention to detail and commitment to excellence in every website and automation system we build.",
+    description: "Every project receives our full attention and commitment to excellence",
   },
 ];
 
@@ -29,145 +31,182 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About | NextGen AI Automation</title>
-        <meta
-          name="description"
-          content="Learn about NextGen AI Automation - professional website development and business automation services. Helping businesses grow digitally with smart technology."
-        />
+        <title>About | NepGrow - Your Digital Growth Partner</title>
+        <meta name="description" content="Learn about NepGrow - helping businesses grow digitally with professional web development, app development, digital marketing, and graphic design services." />
       </Helmet>
       <Layout>
         {/* Hero */}
-        <section className="section-padding relative overflow-hidden">
-          <div className="hero-glow top-20 left-0" />
-          <div className="container-custom relative z-10">
-            <div className="max-w-3xl">
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                About <span className="gradient-text">NextGen AI</span>
+        <section className="py-20 lg:py-28 bg-gradient-hero relative overflow-hidden">
+          <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl mx-auto text-center"
+            >
+              <span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full border border-primary/20">
+                About Us
+              </span>
+              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                About <span className="text-gradient">NepGrow</span>
               </h1>
-              <p className="text-xl text-muted-foreground">
-                Helping businesses grow digitally and save time using smart technology solutions.
+              <p className="text-muted-foreground text-lg">
+                Your trusted partner for complete digital solutions
               </p>
-            </div>
+            </motion.div>
           </div>
         </section>
 
         {/* Story */}
-        <section className="section-padding bg-card/30">
-          <div className="container-custom">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-                  Our Mission
+        <section className="py-20 lg:py-28 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="bg-card rounded-2xl border border-border p-8 lg:p-12"
+              >
+                <h2 className="font-heading text-2xl lg:text-3xl font-bold mb-6 text-center">
+                  Our <span className="text-gradient">Story</span>
                 </h2>
-                <div className="space-y-4 text-muted-foreground">
+                <div className="space-y-6 text-muted-foreground leading-relaxed">
                   <p>
-                    We believe that every business, regardless of size, deserves access to professional digital solutions that actually work. Our mission is to help local businesses, clinics, educational institutions, and startups establish a strong online presence and streamline their operations.
+                    NepGrow was founded with a simple mission: to help local businesses 
+                    and organizations leverage the power of modern technology without the complexity 
+                    and high costs typically associated with digital transformation.
                   </p>
                   <p>
-                    In today's digital world, having a professional website and smart automation systems isn't a luxury—it's a necessity. We make these technologies accessible and practical for businesses that want to grow without the complexity.
+                    We noticed that many businesses struggle with their digital presence - from having 
+                    a professional website to effective marketing and brand identity. 
+                    Traditional agencies often offer solutions that are either too expensive, 
+                    too complicated, or don't address the real challenges businesses face.
                   </p>
                   <p>
-                    Our focus is on delivering solutions that are simple to use, reliable, and designed to produce real results. We don't just build websites; we create tools that help your business attract more customers, save time, and operate more efficiently.
+                    That's why we focus on practical, result-oriented solutions. Whether it's 
+                    building a professional website, developing a custom app, running marketing campaigns, 
+                    or creating stunning designs — every solution we provide is 
+                    designed to deliver tangible value to your business.
                   </p>
                 </div>
-              </div>
-              <div className="card-glass p-8 gradient-border">
-                <div className="space-y-6">
-                  <div className="p-6 rounded-xl bg-primary/10">
-                    <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-                      What We Do
-                    </h3>
-                    <p className="text-muted-foreground">
-                      Professional website development and business automation solutions tailored for growing businesses.
-                    </p>
-                  </div>
-                  <div className="p-6 rounded-xl bg-secondary/50">
-                    <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-                      Who We Serve
-                    </h3>
-                    <p className="text-muted-foreground">
-                      Local businesses, clinics, hospitals, colleges, coaching centers, pharmacies, startups, and professionals.
-                    </p>
-                  </div>
-                  <div className="p-6 rounded-xl bg-secondary/50">
-                    <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-                      Our Approach
-                    </h3>
-                    <p className="text-muted-foreground">
-                      Simple, reliable, and focused on delivering measurable results for your business.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Values */}
-        <section className="section-padding">
-          <div className="container-custom">
-            <div className="text-center mb-16">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Our <span className="gradient-text">Values</span>
+        {/* Mission */}
+        <section className="py-20 lg:py-28 bg-card/50">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="max-w-4xl mx-auto text-center"
+            >
+              <div className="w-16 h-16 mx-auto rounded-2xl bg-primary/10 flex items-center justify-center mb-6 glow-effect">
+                <Target className="w-8 h-8 text-primary" />
+              </div>
+              <h2 className="font-heading text-2xl lg:text-3xl font-bold mb-6">
+                Our <span className="text-gradient">Mission</span>
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                To help businesses grow digitally with comprehensive solutions that work. 
+                We believe every business deserves a strong online presence, effective marketing, 
+                and professional design that sets them apart from the competition.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Values */}
+        <section className="py-20 lg:py-28 bg-background">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+                Our <span className="text-gradient">Values</span>
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 The principles that guide everything we do
               </p>
-            </div>
+            </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-6xl mx-auto">
               {values.map((value, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="card-glass p-8 text-center hover:border-primary/30 transition-all duration-300"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-card rounded-2xl border border-border p-6 text-center"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center mx-auto mb-6">
+                  <div className="w-14 h-14 mx-auto rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                     <value.icon className="w-7 h-7 text-primary" />
                   </div>
-                  <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+                  <h3 className="font-heading font-bold text-foreground mb-2">
                     {value.title}
                   </h3>
-                  <p className="text-muted-foreground">{value.description}</p>
-                </div>
+                  <p className="text-muted-foreground text-sm">
+                    {value.description}
+                  </p>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="section-padding bg-card/30">
-          <div className="container-custom">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Let's Work Together
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Ready to take your business digital? Let's discuss how we can help you achieve your goals.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button
-                  variant="whatsapp"
-                  size="xl"
-                  onClick={() =>
-                    window.open(
-                      "https://wa.me/9779811010510?text=Hi, I'd like to discuss working together on my project.",
-                      "_blank"
-                    )
-                  }
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  Start a Conversation
-                </Button>
-                <Button variant="hero-outline" size="lg" asChild>
-                  <Link to="/contact">
-                    Contact Form
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </Button>
+        {/* What We Focus On */}
+        <section className="py-20 lg:py-28 bg-card/50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center mb-12"
+              >
+                <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+                  What We <span className="text-gradient">Focus On</span>
+                </h2>
+              </motion.div>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                {[
+                  { title: "Reliability", description: "Solutions that work consistently and deliver as promised" },
+                  { title: "Simplicity", description: "Easy to understand, easy to use, no unnecessary complexity" },
+                  { title: "Results", description: "Measurable outcomes that impact your business positively" },
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="bg-card rounded-xl border border-primary/20 p-6 text-center"
+                  >
+                    <h3 className="font-heading text-xl font-bold text-primary mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm">{item.description}</p>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
         </section>
+
+        <CTASection
+          title="Let's Work Together"
+          subtitle="Ready to take your business to the next level? Let's start a conversation"
+        />
       </Layout>
     </>
   );

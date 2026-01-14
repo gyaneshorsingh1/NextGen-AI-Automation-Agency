@@ -1,35 +1,33 @@
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, MessageCircle, Stethoscope, GraduationCap, Building2 } from "lucide-react";
+import CTASection from "@/components/sections/CTASection";
+import { ExternalLink, Globe, Stethoscope, GraduationCap, Store } from "lucide-react";
 
 const projects = [
   {
     icon: Stethoscope,
     title: "Demo Clinic Website",
     category: "Healthcare",
-    description:
-      "Professional clinic website featuring appointment enquiry forms, doctor profiles, service listings, and WhatsApp integration for patient queries.",
-    features: ["Appointment Enquiry Form", "Doctor Profiles", "Service Listings", "WhatsApp Integration"],
-    tag: "Demo Project",
+    description: "A professional clinic website with doctor profiles, services, appointment enquiry system, and WhatsApp integration for patient communication.",
+    features: ["Doctor profiles", "Services page", "Appointment form", "WhatsApp button", "Mobile responsive"],
+    isDemo: true,
   },
   {
     icon: GraduationCap,
     title: "Demo College Website",
     category: "Education",
-    description:
-      "Comprehensive educational institution website with course catalog, admission enquiry automation, and faculty information sections.",
-    features: ["Course Catalog", "Admission Enquiry", "Faculty Section", "Event Calendar"],
-    tag: "Demo Project",
+    description: "Modern educational institute website with course information, admission enquiry automation, and faculty details.",
+    features: ["Course catalog", "Admission form", "Faculty section", "Campus gallery", "Auto-reply system"],
+    isDemo: true,
   },
   {
-    icon: Building2,
+    icon: Store,
     title: "Demo Local Business Website",
     category: "Local Business",
-    description:
-      "Clean and professional business website showcasing products/services, customer testimonials, and easy contact options with Google Maps integration.",
-    features: ["Product Showcase", "Customer Reviews", "Contact Form", "Google Maps"],
-    tag: "Demo Project",
+    description: "Professional business website for local shops and services with product/service showcase and lead capture.",
+    features: ["Services showcase", "Contact form", "Google Maps", "Testimonials", "WhatsApp chat"],
+    isDemo: true,
   },
 ];
 
@@ -37,111 +35,114 @@ const Portfolio = () => {
   return (
     <>
       <Helmet>
-        <title>Portfolio | NextGen AI Automation - Demo Projects</title>
-        <meta
-          name="description"
-          content="View demo projects showcasing our website development capabilities. Sample clinic, college, and local business websites with modern designs."
-        />
+        <title>Portfolio | NepGrow - Our Work & Projects</title>
+        <meta name="description" content="View our demo projects showcasing web development, apps, and designs for clinics, colleges, and local businesses. See what we can build for your business." />
       </Helmet>
       <Layout>
         {/* Hero */}
-        <section className="section-padding relative overflow-hidden">
-          <div className="hero-glow top-20 right-0" />
-          <div className="container-custom relative z-10">
-            <div className="max-w-3xl">
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                Our <span className="gradient-text">Portfolio</span>
+        <section className="py-20 lg:py-28 bg-gradient-hero relative overflow-hidden">
+          <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl mx-auto text-center"
+            >
+              <span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full border border-primary/20">
+                Portfolio
+              </span>
+              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                Our <span className="text-gradient">Work</span>
               </h1>
-              <p className="text-xl text-muted-foreground">
-                Explore our demo projects showcasing the quality and style of work we deliver. Each project demonstrates our approach to professional web design and functionality.
+              <p className="text-muted-foreground text-lg">
+                Explore demo projects showcasing our website development capabilities
               </p>
-            </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* Projects Grid */}
-        <section className="section-padding">
-          <div className="container-custom">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Projects */}
+        <section className="py-20 lg:py-28 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {projects.map((project, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="group card-glass overflow-hidden hover:border-primary/30 transition-all duration-500"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group bg-card rounded-2xl border border-border overflow-hidden transition-all duration-300 hover:border-primary/30"
                 >
-                  {/* Project Image Placeholder */}
-                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center relative">
-                    <project.icon className="w-16 h-16 text-primary/50" />
-                    <div className="absolute top-4 right-4">
-                      <span className="px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-medium">
-                        {project.tag}
+                  {/* Preview Placeholder */}
+                  <div className="relative aspect-video bg-secondary flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
+                    <project.icon className="w-16 h-16 text-primary/40" />
+                    {project.isDemo && (
+                      <span className="absolute top-4 right-4 px-3 py-1 bg-primary/90 text-primary-foreground text-xs font-semibold rounded-full">
+                        Demo Project
                       </span>
+                    )}
+                    <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="flex items-center gap-2 text-primary font-medium">
+                        <Globe className="w-5 h-5" />
+                        View Details
+                      </div>
                     </div>
                   </div>
 
+                  {/* Content */}
                   <div className="p-6">
-                    <span className="text-xs text-primary font-medium uppercase tracking-wider">
-                      {project.category}
-                    </span>
-                    <h3 className="font-display text-xl font-semibold text-foreground mt-2 mb-3">
+                    <span className="text-primary text-sm font-medium">{project.category}</span>
+                    <h3 className="font-heading text-xl font-bold text-foreground mt-1 mb-3">
                       {project.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm mb-4">
+                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                       {project.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.features.map((feature, i) => (
+                    {/* Features */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.features.map((feature, fIndex) => (
                         <span
-                          key={i}
-                          className="px-2.5 py-1 rounded-md bg-secondary text-xs text-foreground"
+                          key={fIndex}
+                          className="px-2 py-1 bg-secondary text-muted-foreground text-xs rounded-md"
                         >
                           {feature}
                         </span>
                       ))}
                     </div>
-
-                    <Button
-                      variant="hero-outline"
-                      size="sm"
-                      className="w-full group-hover:border-primary transition-colors"
-                      disabled
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      View Demo (Coming Soon)
-                    </Button>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
+
+            {/* Coming Soon */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-16 max-w-3xl mx-auto text-center"
+            >
+              <div className="bg-card rounded-2xl border border-border p-8">
+                <h3 className="font-heading text-xl font-bold mb-3">
+                  More Projects Coming Soon
+                </h3>
+                <p className="text-muted-foreground">
+                  We're constantly working on new projects. Check back soon for more examples 
+                  of our work, or contact us to discuss your project.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="section-padding bg-card/30">
-          <div className="container-custom">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Want Something Similar?
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Let's discuss your project requirements and create a custom website tailored to your business needs.
-              </p>
-              <Button
-                variant="whatsapp"
-                size="xl"
-                onClick={() =>
-                  window.open(
-                    "https://wa.me/9779811010510?text=Hi, I saw your portfolio and I'm interested in a similar website for my business.",
-                    "_blank"
-                  )
-                }
-              >
-                <MessageCircle className="w-5 h-5" />
-                Discuss Your Project
-              </Button>
-            </div>
-          </div>
-        </section>
+        <CTASection
+          title="Like What You See?"
+          subtitle="Let's discuss how we can create something similar for your business"
+          primaryText="Start Your Project"
+        />
       </Layout>
     </>
   );
