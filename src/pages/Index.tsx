@@ -11,7 +11,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>NextGen AI Automation | Website Development & Business Automation Services</title>
+        <title>Website Development & Business Automation Services</title>
         <meta name="description" content="Smart websites and automation solutions for growing businesses. Get more enquiries, save time, and work smarter with NextGen AI Automation." />
         <meta name="keywords" content="website development, business automation, WhatsApp automation, lead management, local business websites" />
       </Helmet>
