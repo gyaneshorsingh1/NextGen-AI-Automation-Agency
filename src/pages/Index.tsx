@@ -12,7 +12,7 @@ const Index = () => {
     <>
       <Helmet>
         <title>Website Development & Business Automation Services</title>
-        <meta name="description" content="Smart websites and automation solutions for growing businesses. Get more enquiries, save time, and work smarter with NextGen AI Automation." />
+        <meta name="description" content="Smart websites and automation solutions for growing businesses. Get more enquiries, save time, and work smarter with NepGrow." />
         <meta name="keywords" content="website development, business automation, WhatsApp automation, lead management, local business websites" />
       </Helmet>
       <Layout>

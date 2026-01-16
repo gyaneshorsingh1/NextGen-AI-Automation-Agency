@@ -8,7 +8,7 @@ const NotFound = () => {
   return (
     <>
       <Helmet>
-        <title>Page Not Found | NextGen AI Automation</title>
+        <title>Page Not Found | NepGrow</title>
         <meta name="description" content="The page you're looking for doesn't exist." />
       </Helmet>
       <div className="min-h-screen bg-gradient-hero flex items-center justify-center px-4">

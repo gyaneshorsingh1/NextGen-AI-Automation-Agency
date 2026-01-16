@@ -39,7 +39,7 @@ const WhyChooseUs = () => {
             Why Us
           </span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Why Choose <span className="text-gradient">NextGen AI</span>
+            Why Choose <span className="text-gradient">NepGrow</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             What sets us apart from the rest
