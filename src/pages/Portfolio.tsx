@@ -36,7 +36,7 @@ const projects = [
       "Auto-reply system",
     ],
     isDemo: true,
-    link: "/portfolio/college-demo",
+    link: "https://himalaya-college.netlify.app",
   },
   {
     icon: Store,
